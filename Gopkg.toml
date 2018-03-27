@@ -21,25 +21,16 @@ required = ["k8s.io/code-generator/cmd/client-gen"]
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
-[prune]
-  go-tests = true
-  non-go = true
-  unused-packages = true
-
-  [[prune.project]]
-    name = "k8s.io/code-generator"
-    non-go = false
-    unused-packages = false
 
 [[constraint]]
   name = "k8s.io/code-generator"
   version = "kubernetes-1.10.0"
 
-[[override]]
-  name = "k8s.io/gengo"
-  branch = "master"
-#  revision = "01a732e01d00cb9a81bb0ca050d3e6d2b947927b"
 
 [[constraint]]
   name = "k8s.io/apimachinery"
+  version = "kubernetes-1.10.0"
+
+[[constraint]]
+  name = "k8s.io/client-go"
   version = "kubernetes-1.10.0"
