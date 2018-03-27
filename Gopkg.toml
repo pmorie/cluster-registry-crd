@@ -21,11 +21,9 @@ required = ["k8s.io/code-generator/cmd/client-gen"]
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
-
 [[constraint]]
   name = "k8s.io/code-generator"
   version = "kubernetes-1.10.0"
-
 
 [[constraint]]
   name = "k8s.io/apimachinery"
