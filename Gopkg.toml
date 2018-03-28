@@ -1,3 +1,4 @@
+required = ["k8s.io/code-generator/cmd/client-gen"]
 
 # Gopkg.toml example
 #
@@ -20,11 +21,14 @@
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
-[prune]
-  go-tests = true
-  non-go = true
-  unused-packages = true
+[[constraint]]
+  name = "k8s.io/code-generator"
+  version = "kubernetes-1.10.0"
 
 [[constraint]]
   name = "k8s.io/apimachinery"
+  version = "kubernetes-1.10.0"
+
+[[constraint]]
+  name = "k8s.io/client-go"
   version = "kubernetes-1.10.0"
