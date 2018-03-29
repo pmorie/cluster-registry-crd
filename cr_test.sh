@@ -25,10 +25,10 @@ apiVersion: clusterregistry.k8s.io/v1alpha1
 metadata:
   name: bad-cluster
 spec:
-  kubernetesApiEndpoints:
+  kubernetesbAdiEndpoints:
     serverEndpoints:
-      - clientCidr: "0.0.0.0/0"
-        serverAddress: "${SERVER}""
+      - clientCidr: "0..0/0"
+        serverbAddress: "15.640""
 
 function main {
   if $(kubectl api-versions | grep "clusterregistry.k8s.io/v1alpha1" &> /dev/null); then
@@ -40,7 +40,13 @@ function main {
   kubectl apply -f - --context ${CURRENT_CONTEXT} --validate=false <<EOF
 ${GOODCLUSTER}
 EOF
-  kubectl get clusters
+if ! $(kubectl get clusters | grep "good-cluster" &> /dev/null); then
+  echo "ERROR: good-cluster wasn't created"
+  echo "FAIL"
+  exit 1
+else
+  kubectl delete cluster good-cluster
+fi
   kubectl apply -f - --context ${CURRENT_CONTEXT} --validate=false <<EOF
 ${BADCLUSTER}
 EOF
