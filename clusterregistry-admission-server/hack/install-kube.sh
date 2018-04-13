@@ -58,15 +58,13 @@ kube::util::create_signing_certkey "" "${CERT_DIR}" serving '"server auth"'
 
 # create webhook server key and cert
 kube::util::create_serving_certkey "" "${CERT_DIR}" "serving-ca" server.openshift-clusterregistry-admission.svc "server.openshift-clusterregistry-admission.svc" "server.openshift-clusterregistry-admission.svc"
-
 # install RBAC rules
 kubectl auth reconcile -f artifacts/kube-install/rbac-list.yaml
-
 # deploy the webhook as a daemonset (preferably restricted to the master nodes)
-kubectl create ns openshift-clusterregistry-admission &>/dev/null || true
-kubectl delete daemonset -n openshift-clusterregistry-admission server &>/dev/null || true
+kubectl create ns clusterregistry-admission &>/dev/null || true
+kubectl delete daemonset -n clusterregistry-admission server &>/dev/null || true
 KUBE_CA=$(kubectl config view --minify=true --flatten -o json | jq '.clusters[0].cluster."certificate-authority-data"' -r)
-cat artifacts/kube-install/apiserver-list.yaml.template | \
+cat artifacts/kube-install/apiserver-list.yaml | \
     sed "s/TLS_SERVING_CERT/$(base64 ${CERT_DIR}/serving-server.openshift-clusterregistry-admission.svc.crt | tr -d '\n')/g" | \
     sed "s/TLS_SERVING_KEY/$(base64 ${CERT_DIR}/serving-server.openshift-clusterregistry-admission.svc.key | tr -d '\n')/g" | \
     sed "s/SERVICE_SERVING_CERT_CA/$(base64 ${CERT_DIR}/serving-ca.crt | tr -d '\n')/g" | \
