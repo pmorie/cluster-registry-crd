@@ -25,9 +25,13 @@ spec:
                 properties:
                   clientCIDR:
                     type: string
+                  serverAddress:
+                    type: string
             caBundle:
               type: byte
           authInfo:
+            type: object
+            properties:
             providers:
               type: array
               items:
