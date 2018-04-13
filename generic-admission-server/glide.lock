@@ -1,5 +1,5 @@
-hash: c14e2b764eab02760bd6a1213ad6d7fb301c767bbbb0c1aa267187fbef0605b1
-updated: 2018-04-12T15:34:25.958101037-04:00
+hash: e1dcbb2c7a57ba4d09fee2937dc035f8ed869a1c7341e6d59d5e2d5e5de36585
+updated: 2018-04-12T15:59:23.373477994-04:00
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c2a2088577d12123ddee5f54e0675
@@ -164,6 +164,13 @@ imports:
   - pbutil
 - name: github.com/NYTimes/gziphandler
   version: 56545f4a5d46df9a6648819d1664c3a03a13ffdb
+- name: github.com/openshift/generic-admission-server
+  version: 76d182e57ce628bbf6eb266a7d26cf6c52adf551
+  subpackages:
+  - pkg/apiserver
+  - pkg/cmd
+  - pkg/cmd/server
+  - pkg/registry/admissionreview
 - name: github.com/pborman/uuid
   version: ca53cad383cad2479bbba7f7a1a05797ec1386e4
 - name: github.com/prometheus/client_golang

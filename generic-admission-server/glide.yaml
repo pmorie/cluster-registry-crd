@@ -1,5 +1,7 @@
-package: github.com/openshift/generic-admission-server
+package: github.com/pmorie/cluster-registry-crd/generic-admission-server
 import:
+- package: github.com/openshift/generic-admission-server/pkg/cmd
+  branch: master
 - package: k8s.io/code-generator
   version: kubernetes-1.10.0
 - package: k8s.io/client-go
