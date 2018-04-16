@@ -15,37 +15,43 @@ spec:
       properties:
         spec:
           type: object
-          kubernetesAPIEndpoints:
-            type: object
-            properties:
-            serverEndpoints:
-              type: array
-              items:
-                type: object
-                properties:
-                  clientCIDR:
-                    type: string
+          properties:
+            kubernetesAPIEndpoints:
+              type: object
+              properties:
+                serverEndpoints:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      clientCIDR:
+                        type: string
+                        pattern: '^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$'
+                      serverAddress:
+                        type: string
             caBundle:
-              type: byte
-          authInfo:
-            providers:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  type:
+                type: byte
+            authInfo:
+              type: object
+              properties:
+                providers:
+                  type: array
+                  items:
                     type: object
                     properties:
                       name:
                         type: string
-                  config:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                        value:
-                          type: string
+                      type:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                      config:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            value:
+                              type: string
