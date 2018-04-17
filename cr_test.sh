@@ -19,8 +19,8 @@ spec:
   kubernetesAPIEndpoints:
     serverEndpoints:
     - clientCIDR: "0.0.0.0/0"
-    serverAddress: "${SERVER}"
-  caBundle: "${CABUNDLE}""
+      serverAddress: "${SERVER}"
+    caBundle: "${CABUNDLE}""
 
 BADCIDRCLUSTER="apiVersion: clusterregistry.k8s.io/v1alpha1
 kind: Cluster
@@ -31,7 +31,7 @@ spec:
     serverEndpoints:
       - clientCIDR: "0.0/0"
         serverAddress: "https://crd.example.com"
-  caBundle: "${CABUNDLE}""
+    caBundle: "${CABUNDLE}""
 
 BADSVRCLUSTER="apiVersion: clusterregistry.k8s.io/v1alpha1
 kind: Cluster
@@ -42,7 +42,7 @@ spec:
     serverEndpoints:
       - clientCIDR: "1.2.3.4/5"
         serverAddress: "http://www.baddress.com:1"
-  caBundle: "${CABUNDLE}""
+    caBundle: "${CABUNDLE}""
 
 BADCACLUSTER="apiVersion: clusterregistry.k8s.io/v1alpha1
 kind: Cluster
@@ -53,7 +53,7 @@ spec:
     serverEndpoints:
       - clientCIDR: "1.2.3.4/5"
         serverAddress: "crd.k8s.io:7777"
-  caBundle: "BadBundle""
+    caBundle: "BadBundle""
 
 function main {
   if $(kubectl api-versions | grep "clusterregistry.k8s.io/v1alpha1" &> /dev/null); then
