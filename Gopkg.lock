@@ -72,6 +72,12 @@
   version = "1.1.3"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/kubernetes/repo-infra"
+  packages = ["verify/boilerplate/test"]
+  revision = "d9bb9fdc907665c61c228baa64fed9b91c7dc1b0"
+
+[[projects]]
   name = "github.com/modern-go/concurrent"
   packages = ["."]
   revision = "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
@@ -301,6 +307,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a8190b528a4d8dea4c0de2751d1bd2ad55d5db235fc9905e91e2a264d7bf9e15"
+  inputs-digest = "7f67e4a26c20af8a93061a722637db480edee2fe01fca67c21f8f31270abb63c"
   solver-name = "gps-cdcl"
   solver-version = 1

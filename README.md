@@ -11,3 +11,7 @@ implemented as a set of CRDs.
 ```shell
 $ kubectl create -f crd/cluster-registry.yaml
 ```
+### Code of Conduct
+
+Participation in the Kubernetes community is governed by the
+[Kubernetes Code of Conduct](./code-of-conduct.md).

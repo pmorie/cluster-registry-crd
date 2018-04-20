@@ -1,4 +1,5 @@
-# Copyright 2018 The Kubernetes Authors.
+#!/bin/bash
+# Copyright 2017 The Kubernetes Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -o errexit
+set -o nounset
+set -o pipefail
 
+find_files() {
+  find . -not \( \
+      \( \
+        -wholename '*/vendor/*' \
+      \) -prune \
+    \) -name '*.go'
+}
 
-#!/bin/bash
-
-vendor/k8s.io/code-generator/generate-groups.sh deepcopy github.com/pmorie/cluster-registry-crd/pkg/client github.com/pmorie/cluster-registry-crd/pkg/apis clusterregistry:v1alpha1
+GOFMT="gofmt -s"
+bad_files=$(find_files | xargs $GOFMT -l)
+if [[ -n "${bad_files}" ]]; then
+  echo "!!! '$GOFMT' needs to be run on the following files: "
+  echo "${bad_files}"
+  exit 1
+fi
