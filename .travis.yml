@@ -2,4 +2,6 @@ language: go
 go_import_path: github.com/pmorie/cluster-registry-crd
 go:
   - 1.9.x
-script: "go build ./..."
+script:
+  - vendor/github.com/kubernetes/repo-infra/verify/verify-boilerplate.sh --rootdir="$GOPATH/src/github.com/pmorie/cluster-registry-crd" -v
+  - "go build ./..."
